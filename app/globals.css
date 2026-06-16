@@ -24,3 +24,56 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+:root {
+  --accent-magenta: #ff00ff;
+  --accent-cyan: #00ffff;
+  --accent-purple: #9900ff;
+  --glass-bg: rgba(10, 15, 30, 0.45);
+}
+
+body {
+  background: linear-gradient(135deg, #020508 0%, #000000 100%) !important;
+  position: relative;
+  min-height: screen;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image: radial-gradient(var(--accent-purple) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(to bottom, black 60%, transparent);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.12);
+  border-color: rgba(0, 255, 255, 0.25);
+}
+
+.glow-purple {
+  box-shadow: 0 0 25px rgba(153, 0, 255, 0.12);
+  border-color: rgba(154, 0, 255, 0.25);
+}
+
+@keyframes pulse {
+  0%, 100% {opacity: 0.6; transform: scale(1.05); box-shadow: 0 0 15px #10b981;}
+}
+
+.pulse-glow {
+  animation: pulse 2.5s infinite ease-in-out;
+}
